@@ -6,6 +6,7 @@ import 'infra/custom_server.dart';
 import 'utils/custom_env.dart';
 
 void main() async {
+  CustomEnv.fromFile('.env');
   // Criação de vários Handler => utilizar cascata
 
   // Middleway
@@ -29,4 +30,5 @@ void main() async {
   );
 }
 
-//https://www.youtube.com/watch?v=VTxMcwuolmk&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=10
+//https://www.youtube.com/watch?v=VTxMcwuolmk&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=9
+// 26 minutos

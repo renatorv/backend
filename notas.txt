@@ -1,0 +1,7 @@
+1 - no Windows não estava matando a porta de uso, mesmo após parar a aplicação. Assim ao tentar rodar novamente na mesma porta gerava o erro: 
+    Unhandled exception:
+    SocketException: Failed to create server socket (OS Error: Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta).
+    , errno = 10048), address = localhost, port = 5556
+    Testar no Mac, se vai dar o mesmo ou se esse erro é do Windows que não consegue liberar a porta após finalizar a execução do projeto.
+
+2 - 
