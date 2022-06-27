@@ -4,4 +4,4 @@
     , errno = 10048), address = localhost, port = 5556
     Testar no Mac, se vai dar o mesmo ou se esse erro é do Windows que não consegue liberar a porta após finalizar a execução do projeto.
 
-2 - 
+2 - Ver porta em execução: netstat -aon | findstr ‘[port_number]’.
