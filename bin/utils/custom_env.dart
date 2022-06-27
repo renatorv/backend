@@ -1,11 +1,12 @@
 import 'dart:io';
+import 'parser_extension.dart';
 
 class CustomEnv {
   static Map<String, String> _map = {};
 
-  static Future get({required String key}) async {
+  static Future<T> get<T>({required String key}) async {
     if (_map.isEmpty) await _load();
-    return _map[key];
+    return _map[key]!.toType(T);
   }
 
   static Future<void> _load() async {

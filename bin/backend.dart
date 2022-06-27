@@ -3,6 +3,7 @@ import 'package:shelf/shelf.dart';
 import 'api/blog_api.dart';
 import 'api/login_api.dart';
 import 'infra/custom_server.dart';
+import 'utils/custom_env.dart';
 
 void main() async {
   // Criação de vários Handler => utilizar cascata
@@ -23,8 +24,8 @@ void main() async {
 
   await CustomServer().initialize(
     handler: pipeline,
-    address: 'localhost',
-    port: 8080,
+    address: await CustomEnv.get<String>(key: 'server_address'),
+    port: await CustomEnv.get<int>(key: 'server_port'),
   );
 }
 
