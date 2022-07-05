@@ -1,8 +1,9 @@
 import 'package:shelf/shelf.dart';
 
-import 'api/blog_api.dart';
-import 'api/login_api.dart';
+import 'apis/blog_api.dart';
+import 'apis/login_api.dart';
 import 'infra/custom_server.dart';
+import 'services/noticia_service.dart';
 import 'utils/custom_env.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ void main() async {
         LoginApi().handler,
       )
       .add(
-        BlogApi().handler,
+        BlogApi(NoticiaService()).handler,
       )
       .handler;
 
@@ -33,4 +34,4 @@ void main() async {
 }
 
 // continuar aqui
-// https://www.youtube.com/watch?v=UDQhKinTGj8&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=10
+//https://www.youtube.com/watch?v=pe7f6zQT3Sk&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=14 => 11 mitutos
