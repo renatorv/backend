@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -17,16 +19,21 @@ class BlogApi {
       '/blog/noticias',
       (Request req) {
         List<NoticiaModel> noticias = _service.findAll();
-        return Response.ok(noticias);
+
+        List<Map> noticiasMap = noticias.map((e) => e.toJson()).toList();
+
+        return Response.ok(jsonEncode(noticiasMap));
       },
     );
 
     // NOVA NOTÍCIA
     router.post(
       '/blog/noticias',
-      (Request req) {
-        // _service.save('');
-        return Response.ok('Choveu hoje');
+      (Request req) async {
+        var body = await req.readAsString();
+
+        _service.save(NoticiaModel.fromJson(jsonDecode(body)));
+        return Response(201);
       },
     );
 

@@ -3,6 +3,7 @@ import 'package:shelf/shelf.dart';
 import 'apis/blog_api.dart';
 import 'apis/login_api.dart';
 import 'infra/custom_server.dart';
+import 'infra/middleware_interception.dart';
 import 'services/noticia_service.dart';
 import 'utils/custom_env.dart';
 
@@ -23,8 +24,10 @@ void main() async {
       )
       .handler;
 
-  var pipeline =
-      Pipeline().addMiddleware(logRequests()).addHandler(cascadeHandler);
+  var pipeline = Pipeline()
+      .addMiddleware(logRequests())
+      .addMiddleware(MiddlewareInterception().middleware)
+      .addHandler(cascadeHandler);
 
   await CustomServer().initialize(
     handler: pipeline,
@@ -34,4 +37,4 @@ void main() async {
 }
 
 // continuar aqui
-//https://www.youtube.com/watch?v=pe7f6zQT3Sk&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=14 => 11 mitutos
+//https://www.youtube.com/watch?v=STFJLSIYN18&list=PLRpTFz5_57csByx34C_98wPn3PAxnUDFr&index=15
